@@ -15,15 +15,35 @@ STATUS = (
 )
 
 # Create model to define Item table in database - 55-04
+
+
 class Items(models.Model):
     # Define each column for Items table
-    meal = models.CharField(max_length=255, unique=True)
-    description = models.CharField(max_length=2000)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    meal_type = models.CharField(max_length=255, choices=MEAL_TYPE)  # Choices based on tuple
-    status = models.IntegerField(choices=STATUS, default=1) # Another choices
-    date_created = models.DateTimeField(auto_now_add=True)  # Creation time
-    date_updated = models.DateTimeField(auto_now=True)  # Whenever Edited
+    meal = models.CharField(
+        max_length=255,
+        unique=True
+    )
+    description = models.CharField(
+        max_length=2000
+    )
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2
+    )
+    meal_type = models.CharField(
+        max_length=255,
+        choices=MEAL_TYPE   # Choices based on tuple
+    )
+    status = models.IntegerField(
+        choices=STATUS,  # Another choices
+        default=1
+    )
+    date_created = models.DateTimeField(
+        auto_now_add=True   # At creation time
+    )
+    date_updated = models.DateTimeField(
+        auto_now=True   # Whenever Edited
+    )
 
     # Create a realtionship with User table
     # Many Items to One User - Manay to One
