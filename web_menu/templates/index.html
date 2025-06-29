@@ -7,10 +7,16 @@
   <body>
     <h1>All Menu Items</h1>
     {% for meal in meals %}
-    <h3>{{ meal.1 }}</h3>
+      <h2>{{ meal.1 }}</h2>
       {% for row in items_list %}
-        <h4>{{ row.meal }}</h4>
-        <p>{{ row.description }}</p>
+        {% if row.meal_type == meal.0 %}
+          {% if row.status == 0 %}
+            <h3><del>{{ row.meal }}</del></h3>
+          {% else %}
+            <h3>{{ row.meal }}</h3>
+          {% endif %}
+          <p>---{{ row.description }}</p>
+        {% endif %}
       {% endfor %}
     {% endfor %}
   </body>
